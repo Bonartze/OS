@@ -1,0 +1,1 @@
+/usr/bin/c++ -lstdc++ -Wl, -ldl CMakeFiles/main2.dir/src/main1.cpp.o -o main2  -Wl,-rpath,/home/ivan/CLionProjects/OS/lab4 liblib2.so -ldl 

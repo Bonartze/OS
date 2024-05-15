@@ -1,0 +1,5 @@
+/home/ivan/CLionProjects/OS/lab4/build/CMakeFiles/lib1.dir
+/home/ivan/CLionProjects/OS/lab4/build/CMakeFiles/lib2.dir
+/home/ivan/CLionProjects/OS/lab4/build/CMakeFiles/main.dir
+/home/ivan/CLionProjects/OS/lab4/build/CMakeFiles/edit_cache.dir
+/home/ivan/CLionProjects/OS/lab4/build/CMakeFiles/rebuild_cache.dir

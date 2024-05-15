@@ -1,0 +1,4 @@
+/home/ivan/CLionProjects/OS/KP/src/build/CMakeFiles/client.dir
+/home/ivan/CLionProjects/OS/KP/src/build/CMakeFiles/server.dir
+/home/ivan/CLionProjects/OS/KP/src/build/CMakeFiles/edit_cache.dir
+/home/ivan/CLionProjects/OS/KP/src/build/CMakeFiles/rebuild_cache.dir

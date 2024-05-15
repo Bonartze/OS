@@ -1,0 +1,4 @@
+/home/ivan/CLionProjects/OS/lab5_7/build/CMakeFiles/main.dir
+/home/ivan/CLionProjects/OS/lab5_7/build/CMakeFiles/node.dir
+/home/ivan/CLionProjects/OS/lab5_7/build/CMakeFiles/edit_cache.dir
+/home/ivan/CLionProjects/OS/lab5_7/build/CMakeFiles/rebuild_cache.dir

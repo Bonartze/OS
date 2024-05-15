@@ -24,18 +24,20 @@ void human_set(sem_t *semaphore, int n) {
 }
 
 struct abc {
-    int num;
-    int st;
+    int num; // число
+    int st; // состояние
 };
 
 int main() {
     int ans = 0;
-    abc *mapped = (abc *) mmap(0, sizeof(abc), PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, 0, 0);
+    abc *mapped = (abc *) mmap(0, sizeof(abc), PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, 0,
+                               0); // отображение струкртуры памяти, она будет доступна все процессам
+
     if (mapped == MAP_FAILED) {
         cout << "mmap error\n";
         return -1;
     }
-    sem_unlink("_sem");
+    sem_unlink("_sem"); //удаление семафора
     sem_t *sem = sem_open("_sem", O_CREAT, 0, 2);
     string filename;
     int n;
@@ -54,7 +56,7 @@ int main() {
             while (human_get(sem) == 2) {
                 continue;
             }
-            if (mapped->st == 1) {
+            if (mapped->st == 1) {  // конец строки
                 if (mapped->num == 0) {
                     cout << "Division by zero\n";
                     out << "Division by zero" << endl;
@@ -65,12 +67,12 @@ int main() {
                 out << ans << endl;
                 ans = 0;
                 human_set(sem, 2);
-            } else if (mapped->st == 2) {
+            } else if (mapped->st == 2) {  // конец ввода
                 if (mapped->num == 0) {
                     cout << "Division by zero\n";
                     out << "Division by zero" << endl;
                     exit(1);
-                } else {
+                } else {  // пробел
                     ans /= mapped->num;
                 }
                 out << ans << endl;

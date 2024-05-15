@@ -3,18 +3,18 @@
 #include "vector"
 #include "fstream"
 #include "string"
- 
+
 using namespace std;
- 
+
 int main() {
-    int pipefd[2];
-    pipe(pipefd);
+    int pipefd[2]; //дескрипторы канала
+    pipe(pipefd); // соаздние канала
     int id = fork();
- 
+
     if (id == -1) {
         return -1;
     }
-    if (id == 0) {
+    if (id == 0) { // если процесс дочерний
         string filename;
         int lengthFilename;
         read(pipefd[0], &lengthFilename, sizeof(int));
@@ -37,7 +37,7 @@ int main() {
                 if (buff == 0) {
                     exit(-1);
                 } else {
-                    result /= buff;   
+                    result /= buff;
                 }
             }
         }
@@ -45,7 +45,7 @@ int main() {
         outfile.close();
         close(pipefd[0]);
         close(pipefd[1]);
-    } else {
+    } else { // если процесс родительский
         cout << "Parent's pid " << getpid() << "\n";
         cout << "Child's pid " << id << "\n";
         vector<int> nums;
@@ -68,8 +68,6 @@ int main() {
         }
         close(pipefd[1]);
         close(pipefd[0]);
- 
- 
     }
     return 0;
 }

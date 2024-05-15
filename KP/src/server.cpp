@@ -66,11 +66,11 @@ int main()
 	socket.setsockopt(ZMQ_SNDTIMEO, (int)milliseconds); // устанавливает флаги и время ожидания от сервера
 	//Это ассоциативный контейнер, который работает по принципу — [ключ — значение]
 	map<int, pair<unsigned, unsigned> >statistics; 
-	map<int, pair<unsigned, unsigned> > amount;
-	map<int, pair<vector<vector<char> >, vector<vector<char> > > > fields;
-	map<int, vector<pair<unsigned, unsigned> > > possible_turns;
-	map<int, pair<unsigned, unsigned> > last_commands;
-	map<int, bool> finishing;
+	map<int, pair<unsigned, unsigned> > amount; //Хранит количество кораблей, уничтоженных сервером и игроком
+	map<int, pair<vector<vector<char> >, vector<vector<char> > > > fields; //Хранит игровые поля сервера и игрока
+	map<int, vector<pair<unsigned, unsigned> > > possible_turns; //Хранит возможные ходы для сервера
+	map<int, pair<unsigned, unsigned> > last_commands; //Хранит последнюю команду, отправленную серверу
+	map<int, bool> finishing; //Указывает, завершает ли сервер уничтожение корабля
 	map<int, vector<pair<unsigned, unsigned> > > variants; // после удачного попадания сервер пойдет на соседние клетки
 	while (true) 
 	{
@@ -80,7 +80,7 @@ int main()
 		string command = message.substr(0, message.find(" "));
 		int ID = stoi(message.substr(message.find(" ") + 1));
 		cout << message << "\n";
-		if (command == "ID")
+		if (command == "ID")  //регистрация нового игрока
 		{
 			statistics[ID] = make_pair(0, 0);
 			amount[ID] = make_pair(0, 0);
@@ -284,7 +284,7 @@ int main()
 					amount[ID] = make_pair(0, 0);
 				}
 			}
-			if (!finishing[ID]) // компуктер рандомно стреляет если у пользователчя предыдущий ход был неудачным 
+			if (!finishing[ID])
 			{
 				int length = possible_turns[ID].size();
 				srand(time(0));

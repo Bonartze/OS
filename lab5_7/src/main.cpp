@@ -124,7 +124,7 @@ int main() {
             }
             exit(0);
         } else {
-            std::cout << "Incorrect command: " << command << "<!\n"; // если ввели херню - вежливо скажем об этом
+            std::cout << "Incorrect command: " << command << "<!\n";
         }
     }
 }
